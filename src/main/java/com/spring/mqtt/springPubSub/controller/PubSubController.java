@@ -5,8 +5,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.spring.mqtt.springPubSub.mqttClient.PubSubClient;
+
 @Controller
 public class PubSubController {
+	
+	PubSubClient pubSubClient = new PubSubClient();
 
 	@RequestMapping(value = { "/" }, method = RequestMethod.GET)
 	public ModelAndView welcomePage() {
@@ -29,6 +33,7 @@ public class PubSubController {
 	
 	@RequestMapping(value = { "/ledOn" }, method = RequestMethod.POST)
 	public String ledOn() {
+		pubSubClient.publish("LedOn");
 
 		return "redirect:buttons";
 
@@ -36,6 +41,7 @@ public class PubSubController {
 	
 	@RequestMapping(value = { "/ledOff" }, method = RequestMethod.POST)
 	public String ledOff() {
+		pubSubClient.publish("LedOff");
 
 		return "redirect:buttons";
 
