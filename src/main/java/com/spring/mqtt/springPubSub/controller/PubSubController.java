@@ -33,7 +33,7 @@ public class PubSubController {
 	
 	@RequestMapping(value = { "/ledOn" }, method = RequestMethod.POST)
 	public String ledOn() {
-		pubSubClient.publish("LedOn");
+		pubSubClient.publish("1");
 
 		return "redirect:buttons";
 
@@ -41,7 +41,7 @@ public class PubSubController {
 	
 	@RequestMapping(value = { "/ledOff" }, method = RequestMethod.POST)
 	public String ledOff() {
-		pubSubClient.publish("LedOff");
+		pubSubClient.publish("0");
 
 		return "redirect:buttons";
 
